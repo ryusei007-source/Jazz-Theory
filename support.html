@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サポート – Jazz Theory</title>
+  <style>
+    :root {
+      --bg:      #ffffff;
+      --surface: #f5f5f7;
+      --border:  #e0e0e0;
+      --text:    #1d1d1f;
+      --muted:   #6e6e73;
+      --accent:  #58cc02;
+      --accent-h:#3a9e00;
+      --r:       16px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #000000;
+        --surface: #1c1c1e;
+        --border:  #2c2c2e;
+        --text:    #f5f5f7;
+        --muted:   #8e8e93;
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-h); }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px; z-index: 100;
+    }
+    .nav-brand { font-size: 17px; font-weight: 700; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a {
+      font-size: 14px; color: var(--muted); text-decoration: none;
+      padding: 6px 12px; border-radius: 8px; transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--surface); color: var(--text); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    /* Content */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      width: 100%;
+    }
+    h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+    .subtitle { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
+
+    /* FAQ */
+    h2 { font-size: 22px; font-weight: 700; margin: 40px 0 16px; }
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    summary {
+      list-style: none;
+      padding: 16px 20px;
+      font-size: 15px; font-weight: 500;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      transition: background .15s;
+      user-select: none;
+    }
+    summary:hover { background: var(--border); }
+    summary::-webkit-details-marker { display: none; }
+    .chevron {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      color: var(--muted);
+      transition: transform .2s;
+    }
+    details[open] .chevron { transform: rotate(180deg); }
+    details[open] summary { border-bottom: 1px solid var(--border); }
+    .faq-body {
+      padding: 16px 20px;
+      font-size: 15px; line-height: 1.75;
+      color: var(--text);
+    }
+    .faq-body p { margin-bottom: 8px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    .faq-body ul { padding-left: 18px; }
+    .faq-body li { margin-bottom: 4px; }
+
+    /* Contact card */
+    .contact {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 36px 24px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .contact .emoji { font-size: 40px; margin-bottom: 16px; }
+    .contact h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .contact p { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 15px; font-weight: 700;
+      padding: 12px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn:hover { background: var(--accent-h); color: #fff; }
+    .btn-note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding: 24px; text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 14px; color: var(--muted); text-decoration: none;
+      padding: 4px 10px; border-radius: 6px;
+    }
+    .footer-links a:hover { color: var(--text); background: var(--surface); }
+    .copy { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Jazz Theory</a>
+  <div class="nav-links">
+    <a href="index.html">ホーム</a>
+    <a href="privacy.html">プライバシー</a>
+    <a href="support.html" class="active">サポート</a>
+  </div>
+</nav>
+
+<main>
+  <h1>サポート</h1>
+  <p class="subtitle">よくあるご質問と問い合わせ窓口</p>
+
+  <h2>よくある質問</h2>
+  <div class="faq-list">
+
+    <!-- 1 -->
+    <details>
+      <summary>
+        対応 iOS バージョンは？
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p>本アプリは <strong>iOS 18.0 以上</strong>が必要です。</p>
+        <p>設定 → 一般 → ソフトウェア・アップデートから最新バージョンにアップデートしてください。iPhone 8 以降の機種であれば iOS 18 にアップデート可能です。</p>
+      </div>
+    </details>
+
+    <!-- 2 -->
+    <details>
+      <summary>
+        オフラインで使えますか？
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p><strong>はい、完全オフライン対応です。</strong> 学習・トレーニング・進捗の保存はすべてインターネット接続なしで動作します。</p>
+        <p>Game Center のリーダーボードへのスコア送信はインターネット接続が必要ですが、オフライン中も引き続き学習できます。接続が回復すると自動的に同期されます。</p>
+      </div>
+    </details>
+
+    <!-- 3 -->
+    <details>
+      <summary>
+        無料ですか？
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p><strong>現在のバージョン（v1.0）は完全無料です。</strong> すべてのステージ・機能を制限なくご利用いただけます。</p>
+        <p>広告も表示されません。将来のバージョンでプレミアム機能が追加される可能性がありますが、現在ご提供している機能が有料化されることはありません。</p>
+      </div>
+    </details>
+
+    <!-- 4 -->
+    <details>
+      <summary>
+        Game Center のリーダーボードとは？
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p>Apple の Game Center を通じて、獲得した XP（経験値）を世界中のプレイヤーと比較できます。</p>
+        <p>参加するには、設定 → Game Center から Apple ID でサインインしてください。サインインしない場合でも学習機能はすべてご利用いただけます。</p>
+        <p>リーダーボードはアプリ内のホーム画面から確認できます。</p>
+      </div>
+    </details>
+
+    <!-- 5 -->
+    <details>
+      <summary>
+        ハート機能について教えてください
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p>ハートはトレーニングセッションでのライフです。最大 5 つまで持てます。</p>
+        <ul>
+          <li>問題に不正解・スキップすると 1 つ減少します</li>
+          <li>ハートが 0 になるとセッションを続けられません</li>
+          <li>ハートは <strong>30 分ごとに 1 つ自動回復</strong>します</li>
+          <li><strong>復習モード</strong>（間違えた問題）はハートを消費しません</li>
+        </ul>
+        <p>ハートが 0 のときは、復習モードで学習を続けるか、回復まで待つことをお勧めします。</p>
+      </div>
+    </details>
+
+    <!-- 6 -->
+    <details>
+      <summary>
+        削除したデータは復元できますか？
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p>残念ながら、<strong>現時点では復元できません。</strong> 進捗データはすべて端末内にローカル保存されており、アプリを削除すると完全に削除されます。</p>
+        <p>機種変更の際は、事前にアプリを削除しないようご注意ください。iCloud バックアップ経由で一部データが引き継がれる場合があります。</p>
+        <p>クラウドバックアップ機能は将来のアップデートで対応予定です。</p>
+      </div>
+    </details>
+
+    <!-- 7 -->
+    <details>
+      <summary>
+        不具合を報告したい
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p>以下の情報を添えてサポートメールをお送りください：</p>
+        <ul>
+          <li>不具合の内容（できるだけ詳しく）</li>
+          <li>発生手順・タイミング</li>
+          <li>iPhone の機種名（例：iPhone 15 Pro）</li>
+          <li>iOS バージョン（設定 → 一般 → 情報で確認）</li>
+          <li>アプリのバージョン</li>
+        </ul>
+        <p>スクリーンショットや画面録画があると、より迅速に対応できます。</p>
+      </div>
+    </details>
+
+    <!-- 8 -->
+    <details>
+      <summary>
+        他の言語への対応予定はありますか？
+        <svg class="chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </summary>
+      <div class="faq-body">
+        <p>現在は<strong>日本語のみ</strong>対応しています。</p>
+        <p>英語・中国語・韓国語などへの対応はユーザーからのご要望や利用状況を見ながら検討する予定です。対応を希望される言語があればサポートまでお知らせください。</p>
+      </div>
+    </details>
+
+  </div><!-- /faq-list -->
+
+  <!-- Contact -->
+  <div class="contact">
+    <div class="emoji">✉️</div>
+    <h3>解決しない場合はご連絡ください</h3>
+    <p>問題の詳細・機種・iOS バージョンを添えてお送りいただくと、迅速に対応できます。</p>
+    <a class="btn" href="mailto:support@jazztheory.com?subject=Jazz Theory サポート">メールで問い合わせる</a>
+    <p class="btn-note">通常 1〜3 営業日以内に返信します</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">ホーム</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="support.html">サポート</a>
+  </div>
+  <p class="copy">© 2026 Ryusei. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

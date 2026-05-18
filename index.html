@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jazz Theory – 毎日5分でジャズ理論を習得</title>
+  <style>
+    /* ── CSS variables ───────────────────────────── */
+    :root {
+      --bg:       #ffffff;
+      --surface:  #f5f5f7;
+      --border:   #e0e0e0;
+      --text:     #1d1d1f;
+      --muted:    #6e6e73;
+      --accent:   #58cc02;
+      --accent-h: #3a9e00;
+      --r:        16px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #000000;
+        --surface: #1c1c1e;
+        --border:  #2c2c2e;
+        --text:    #f5f5f7;
+        --muted:   #8e8e93;
+      }
+    }
+
+    /* ── Reset ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-h); }
+
+    /* ── Nav ─────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      z-index: 100;
+    }
+    .nav-brand {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 8px; }
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background .15s;
+    }
+    .nav-links a:hover { background: var(--surface); color: var(--text); }
+    .nav-links a.active { color: var(--accent); font-weight: 600; }
+
+    /* ── Hero ────────────────────────────────────── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+    }
+    .app-icon {
+      width: 112px;
+      height: 112px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, #1a1a2e, #16213e);
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+      margin-bottom: 28px;
+    }
+    .hero h1 { font-size: 44px; font-weight: 800; letter-spacing: -.5px; margin-bottom: 10px; }
+    .hero p  { font-size: 18px; color: var(--muted); margin-bottom: 40px; }
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 40px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background .2s, transform .1s;
+    }
+    .btn:hover { background: var(--accent-h); transform: scale(1.03); color: #fff; }
+    .btn-note { font-size: 13px; color: var(--muted); margin-top: 12px; }
+
+    /* ── Sections ────────────────────────────────── */
+    main { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; width: 100%; }
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 56px 0 20px;
+      text-align: center;
+    }
+
+    /* ── Feature grid ────────────────────────────── */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 22px;
+    }
+    .card .icon { font-size: 30px; margin-bottom: 10px; }
+    .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── Stage table ─────────────────────────────── */
+    .stage-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .stage-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .stage-row:last-child { border-bottom: none; }
+    .stage-num {
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .stage-info .name { font-size: 15px; font-weight: 500; }
+    .stage-info .desc { font-size: 13px; color: var(--muted); }
+
+    /* ── Footer ──────────────────────────────────── */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+    .footer-links { display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 14px; color: var(--muted); text-decoration: none;
+      padding: 4px 10px; border-radius: 6px;
+    }
+    .footer-links a:hover { color: var(--text); background: var(--surface); }
+    .copy { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a class="nav-brand" href="index.html">Jazz Theory</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">ホーム</a>
+    <a href="privacy.html">プライバシー</a>
+    <a href="support.html">サポート</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="app-icon">🎷</div>
+  <h1>Jazz Theory</h1>
+  <p>毎日5分でジャズ理論を習得</p>
+  <a class="btn" href="#">App Store でダウンロード</a>
+  <p class="btn-note">iOS 18.0 以上 · 無料</p>
+</div>
+
+<main>
+
+  <!-- Features -->
+  <h2 class="section-title">特徴</h2>
+  <div class="features">
+    <div class="card">
+      <div class="icon">🎹</div>
+      <h3>12キーすべてに対応</h3>
+      <p>Concert・B♭・E♭ の3種の楽器キーに対応。あなたの楽器に合った問題を出題します。</p>
+    </div>
+    <div class="card">
+      <div class="icon">📈</div>
+      <h3>11ステージ構成</h3>
+      <p>メジャースケールから始まり、テンション・オルタード・ディミニッシュまで段階的に習得。</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎮</div>
+      <h3>ゲーム感覚で学習</h3>
+      <p>12キーグリッドで直感的に回答。正解でコンボが続き、学習がどんどん楽しくなります。</p>
+    </div>
+    <div class="card">
+      <div class="icon">♻️</div>
+      <h3>復習システム</h3>
+      <p>間違えた問題を自動収集し、苦手な箇所を集中的に復習。効率よく弱点を克服できます。</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏆</div>
+      <h3>Game Center 統合</h3>
+      <p>獲得 XP がリーダーボードに反映。世界中のプレイヤーとランキングを競い合えます。</p>
+    </div>
+    <div class="card">
+      <div class="icon">📳</div>
+      <h3>ハプティックフィードバック</h3>
+      <p>正解・不正解を振動でも通知。音を出せない場所でも快適に学習を続けられます。</p>
+    </div>
+  </div>
+
+  <!-- Stages -->
+  <h2 class="section-title">学習ステージ</h2>
+  <div class="stage-list">
+    <div class="stage-row"><div class="stage-num">1</div><div class="stage-info"><div class="name">メジャースケール</div><div class="desc">ドレミファソラシド — 音楽の基礎</div></div></div>
+    <div class="stage-row"><div class="stage-num">2</div><div class="stage-info"><div class="name">マイナースケール</div><div class="desc">哀愁のある音列。3・6・7番目が半音低い</div></div></div>
+    <div class="stage-row"><div class="stage-num">3</div><div class="stage-info"><div class="name">メジャーセブン（maj7）</div><div class="desc">明るく洗練された4音コード</div></div></div>
+    <div class="stage-row"><div class="stage-num">4</div><div class="stage-info"><div class="name">マイナーセブン（m7）</div><div class="desc">暗くて深みのあるジャズの基本コード</div></div></div>
+    <div class="stage-row"><div class="stage-num">5</div><div class="stage-info"><div class="name">ドミナントセブン（7）</div><div class="desc">解決への緊張感を生む II-V-I の核心</div></div></div>
+    <div class="stage-row"><div class="stage-num">6</div><div class="stage-info"><div class="name">ハーフディミニッシュ（m7♭5）</div><div class="desc">マイナー II-V-I の「II」コード</div></div></div>
+    <div class="stage-row"><div class="stage-num">7</div><div class="stage-info"><div class="name">テンション</div><div class="desc">コードに加える「スパイス」の音 9・#11・13</div></div></div>
+    <div class="stage-row"><div class="stage-num">8</div><div class="stage-info"><div class="name">オルタードテンション</div><div class="desc">最大の緊張感 ♭9・#9・♭13</div></div></div>
+    <div class="stage-row"><div class="stage-num">9</div><div class="stage-info"><div class="name">ディミニッシュ（dim7）</div><div class="desc">短3度ずつ均等に積んだ対称的なコード</div></div></div>
+    <div class="stage-row"><div class="stage-num">10</div><div class="stage-info"><div class="name">サスペンド（7sus4）</div><div class="desc">宙ぶらりんな浮遊感。3度を含まない</div></div></div>
+    <div class="stage-row"><div class="stage-num">11</div><div class="stage-info"><div class="name">オーグメント（aug）</div><div class="desc">5度を半音上げた膨らみのある神秘的な響き</div></div></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">ホーム</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="support.html">サポート</a>
+  </div>
+  <p class="copy">© 2026 Ryusei. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
